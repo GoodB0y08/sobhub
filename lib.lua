@@ -447,8 +447,6 @@ function lib:Window(text, preset, closebind)
         end
         function tabcontent:Toggle(text, default, callback)
             local toggled = false
-			local FunctionToggle = {}
-			
             local Toggle = Instance.new("TextButton")
             local ToggleCorner = Instance.new("UICorner")
             local ToggleTitle = Instance.new("TextLabel")
@@ -532,66 +530,7 @@ function lib:Window(text, preset, closebind)
                     end
                 end
             )()
-        
-            function FunctionToggle:Set(bool)
-                if not bool then
-                    TweenService:Create(
-                        Toggle,
-                        TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                        {BackgroundColor3 = Color3.fromRGB(37,37,37)}
-                    ):Play()
-                    TweenService:Create(
-                        FrameToggle1,
-                        TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                        {BackgroundTransparency = 1}
-                    ):Play()
-                    TweenService:Create(
-                        FrameToggle2,
-                        TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                        {BackgroundTransparency = 1}
-                    ):Play()
-                    TweenService:Create(
-                        FrameToggle3,
-                        TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                        {BackgroundTransparency = 0}
-                    ):Play()
-                    TweenService:Create(
-                        FrameToggleCircle,
-                        TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                        {BackgroundColor3 = Color3.fromRGB(255,255,255)}
-                    ):Play()
-                    FrameToggleCircle:TweenPosition(UDim2.new(0.587, 0, 0.222000003, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
-                else
-                    TweenService:Create(
-                        Toggle,
-                        TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                        {BackgroundColor3 = Color3.fromRGB(34,34,34)}
-                    ):Play()
-                    TweenService:Create(
-                        FrameToggle1,
-                        TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                        {BackgroundTransparency = 0}
-                    ):Play()
-                    TweenService:Create(
-                        FrameToggle2,
-                        TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                        {BackgroundTransparency = 0}
-                    ):Play()
-                    TweenService:Create(
-                        FrameToggle3,
-                        TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                        {BackgroundTransparency = 1}
-                    ):Play()
-                    TweenService:Create(
-                        FrameToggleCircle,
-                        TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                        {BackgroundColor3 = Color3.fromRGB(50,50,50)}
-                    ):Play()
-                    FrameToggleCircle:TweenPosition(UDim2.new(0.127000004, 0, 0.222000003, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
-                end
-                toggled = not toggled
-                pcall(callback, toggled)
-            end
+			
             Toggle.MouseButton1Click:Connect(function()
                 if toggled == false then
                     TweenService:Create(
@@ -683,8 +622,6 @@ function lib:Window(text, preset, closebind)
             end
 
             Tab.CanvasSize = UDim2.new(0, 0, 0, TabLayout.AbsoluteContentSize.Y)
-
-            return FunctionToggle
         end
         function tabcontent:Slider(text, min,max,start,callback)
             local dragging = false
